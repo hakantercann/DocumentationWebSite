@@ -150,15 +150,9 @@ const signin = (req, res) =>{
             expiresIn: 86400
         });
         var authorities = [];
-        user.getRoles().then(roles =>{
-            for(let i = 0; i < roles.length; i++){
-                authorities.push("ROLE" + roles[i].roleName.toUpperCase());
-            }
             res.status(200).send({ message:{
-                username: user.username,
-                roles: authorities, 
+                userID: user.userID,
                 accessToken: token}
-            });
         });
     }).catch(err =>{
         res.status(500).send({message: err});

@@ -16,7 +16,7 @@ const router = require('express').Router();
 
 router.get("/test/all",  authController.allAccess);
 
-router.get("/test/admin", [authJwt.verifyToken, authJwt.isAdmin], authController.adminAccess);
+router.get("/test/admin", [authJwt.verifyToken], authController.adminAccess);
 router.get("/test/user", [authJwt.verifyToken], authController.userAccess);
 
 module.exports = router;
